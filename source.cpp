@@ -3,69 +3,71 @@ using namespace std;
 
 void main()
 {
-	// 1차원 배열과 포인터
-	int* ptr;
-	int score1[10] = { 10, 20 , 30, 40, 50, 60 };
+	/*
+	int score[10] = { 10, 20, 30 };
+	// char str[10] = { 's', 't', 'r', 'i', 'n', 'g' };
+	char str[] = "This is my world";
+	char* ptr;
 
-	ptr = score1;
+	ptr = str;
+	// *(ptr + 4) = '\0';	// *(str+4) ==== str[4] ==== ptr[4] ==== *(ptr+4)
+
+	// char str[7] = "String"; 처럼 ""안에 문자를 넣어주면
+	// '\0'이 뒤에 자동으로 들어가짐.
+	// 배열 방식처럼 넣으면 널이 자동으로 들어가지진 않지만,
+	// 운 좋게 뒤에 널이 붙어 정상적으로 출력되는 것일 것..?
+
+
+	// char str[6] = { 's', 't', 'r', 'i', 'n', 'g' };로 하면
+	// str출력시 -> string 뒤에 이상한 문자들도 같이 출력됨
+	// 마지막 칸에 '\0'이 들어갈 수 없어 더 출력되는 것이기 때문
+	// '\0'이 등장하면 그 문자열이 끝임을 인식함
+
+
+	// cout << score << endl;
+	cout << str << endl;
+	cout << ptr + 5 << endl;
+	*/
+
+	/*
+	// 동적 할당, 값 넣기
+	int* score;
+	int num;
+
+	cout << "학생 수는? : ";
+	cin >> num;
+
+	score = new int[num];
+
+	for (int i = 0; i < num; i++)
+		cin >> *(score + i);	// score[i]
+
+	int sum = 0;
+
+	for (int i = 0; i < num; i++)
+		sum += score[i];
+
+	cout << sum;
+	*/
+
 	
-	// 모두 같은 주소값이 뜨는 것을 확인할 수 있다.
-	// 배열명, &배열명, &배열첫원소가 모두 동일 주소값을 출력
-	cout << score1 << endl;
-	cout << &score1 << endl;
-	cout << &score1[0] << endl;
-
-	// score1과 동일하게 배열의 시작 주소가 뜸
-	cout << ptr << endl;
-	
-
-	for (int i = 0; i < 10; i++)
+	// 구조체 실습
+	struct employ
 	{
-		// 배열원소들이 연속된 기억 장소를 갖고 있음을 확인
-		// 각 원소의 크기 확인
-		// int 배열 - 각 원소마다 4byte씩 차지
-		cout << "index = " << i << ">>> 주소 : " << &score1[i] << endl;
+		char name[20];
+		int year;
+		int salary;
+	};
+	struct employ kim, jung, park;
+	struct employ* ptr;
 
-		// &score1[i]와 score1 + i가 동일함을 확인
-		// score1 + i  >>> 인덱스가 i인 원소의 주소
-		// 컴파일러에서는 &score1[i]도 score1 + i의 표현으로 바뀜
-		cout << (score1 + i) << endl;
-		
-		// index가 i인 원소의 값 score1[i]와 동일한 표현
-		cout << *(score1 + i) << endl;
-	}
+	kim = { "kim", 2010, 3000 };
+	jung = { "jung", 2011, 2500 };
+	park = { "park", 2009, 3400 };
 
-	for (int i = 0; i < 10; i++)
-	{
-		// 각 원소의 값 출력
-		cout << "score1[" << i << "] = " << score1[i] << endl;
-		cout << "score1[" << i << "] = " << *(score1 + i) << endl;
-		cout << "score1[" << i << "] = " << *(ptr + i) << endl;
-		cout << "score1[" << i << "] = " << *(ptr++) << endl;
-		cout << "score1[" << i << "] = " << ptr[i] << endl;
-	}
+	ptr = &kim;
 
-
-	// --------------------------------------------- //
-	// 2차원 배열과 포인터
-	int score[3][4] = { {10, 20, 30, 40},
-						{100, 110, 120, 130},
-						{200, 210, 220, 230} };
-
-	// 첫번째 원소의 주소값(2차원 배열의 시작주소)
-	cout << score << " : " << &score << " : " << &score[0][0] << endl;
-
-	// 각각 1행에 16바이트가 필요함을 알 수 있음(끝에서 두번째 숫자가 1씩 커짐)
-	// int형 원소 * 4개 == 4byte * 4 == 16byte
-	cout << score[0] << " : " << score[1] << " : " << score[2] << endl;
-
-	// 그대로 주소값이 나오는 것을 확인
-	cout << &score[0] << " : " << &score[1] << " : " << &score[2] << endl;
-
-	// 원소값이 나오는 것을 확인
-	cout << score[0][0] << " : " << score[1][0] << " : " << score[2][0] << endl;
-
-	// 나오는 원소값 확인
-	// 10, 120, 230
-	cout << *score[0] << " : " << *(score[1] + 2) << " : " << *(score[2] + 3) << endl;
+	cout << kim.name << " : " << kim.year << endl;
+	cout << ptr->name << " : " << ptr->year << endl;
+	cout << (*ptr).name << " : " << (*ptr).year << endl;
 }
