@@ -1,2 +1,2 @@
-# Maze_Solving
-미로 찾기 문제 - 스택 활용
+# Data_structure
+자료구조 수업 실습 & 과제
