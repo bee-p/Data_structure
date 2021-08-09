@@ -1,0 +1,5 @@
+﻿  source_7.cpp
+e:\자료\c++\data_structure_week9\source_7.cpp(72): warning C4326: 'main'의 반환 형식이 'int'이어야 하는데 'void'입니다.
+  source_7_object.cpp
+  코드를 생성하고 있습니다...
+  data_structure_week9.vcxproj -> E:\자료\C++\data_structure_week9\Debug\data_structure_week9.exe
